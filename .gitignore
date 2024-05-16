@@ -68,3 +68,6 @@ snapshots.js
 
 # Yarn local mirror content
 .yarn-local-mirror
+
+# ignore run_logs
+run_logs/
