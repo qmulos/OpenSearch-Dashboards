@@ -43,7 +43,6 @@ selenium
 *.out
 package-lock.json
 .yo-rc.json
-.vscode
 *.sublime-*
 npm-debug.log*
 .tern-project
@@ -71,3 +70,7 @@ snapshots.js
 
 # Ignore the generated antlr files
 /src/plugins/data/public/antlr/**/grammar/.antlr/
+
+
+# Q specific files to ignore
+run_logs/*

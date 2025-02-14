@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+
+    // This configuration file will work to launch OpenSearch Dashboards in the debugger
+    // using the "Start Dashboards Server" configuration in the Run and Debug view.
+    // To use this configuration, you must:
+    // - Use OpenSearch Dashboards 2.18.0
+    // - Pull the latest changes from the poc-osd-app-plugin repo (develop branch)
+    // - Set your Node.js version in the "program" attribute. You can find the path to the Yarn binary by running `which yarn` in your terminal.
+    // - Set the path to your .env file in the "envFile" attribute.
+    // - Have an OpenSearch instance already running.
+    // - Run `yarn osd bootstrap` in your terminal to install dependencies.
+    // Note: the source maps are not working correctly in this configuration yet. We are working on a fix.
+    // For now, type `debugger` in your server-side code to set breakpoints before starting the debugger.
+    // Note: This configuration has only been tested on macOS M2 Pro with OpenSearch Dashboards 2.18.0.
+    "configurations": [
+        {
+            //   - "type": Specifies that this configuration is for Node.js.
+            "type": "node",
+            //   - "request": Indicates that this configuration is for launching the application.
+            "request": "launch",
+            //   - "name": A friendly name for the configuration.
+            "name": "Start Dashboards Server",
+            // - "program": The path to the program to run, in this case, the Yarn binary.
+            // In your terminal, you can run `which yarn` to find the path to the Yarn binary.
+            "program": "${userHome}/.nvm/versions/node/v18.19.0/bin/yarn",
+            //   - "args": Arguments passed to the program, in this case, "--dev" to run in development mode.
+            "args": ["run", "start", "--no-base-path", "--dev", "--run-examples"],
+            //   - "cwd": The current working directory for the program.
+            "cwd": "${workspaceFolder}",
+            //   - "runtimeArgs": Additional arguments for the Node.js runtime, here it includes "--inspect" for debugging.
+            "runtimeArgs": ["--inspect"],
+            //   - "env": Environment variables for the program, setting "NODE_OPTIONS" to increase the memory limit.
+            "env": {
+              "NODE_OPTIONS": "--max-old-space-size=4096",
+              "NODE_ENV": "development",
+            },
+            "envFile": "${workspaceFolder}/config/.env",
+            //   - "sourceMaps": Enables source maps for better debugging experience.
+            "sourceMaps": true,
+            //   - "outFiles": Specifies the location of the compiled JavaScript files.
+            "outFiles": ["${workspaceFolder}/target/**/*.js"]
+          }
+    ]
+}
